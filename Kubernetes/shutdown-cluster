@@ -1,0 +1,22 @@
+#How to Shutdown the K8s cluster
+
+https://perrohunter.com/how-to-shutdown-a-kops-kubernetes-cluster-on-aws/
+
+#get the Nodes using below commnands
+	
+kops edit ig nodes
+
+and set maxSize and minSize to 0
+
+#master, I had to figure my master by doing
+
+kops edit ig master-us-west-2a
+
+and again set maxSize and minSize to 0
+
+#update the Cluster 
+
+kops update cluster --yes
+kops rolling-update cluster
+
+If you wanted to turn your cluster back on, rever the settings, changing your master to at least 1, and your nodes to your liking, I use 2.
