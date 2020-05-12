@@ -1,0 +1,7 @@
+aws s3 mb s3://dev.k8s.rohit.in
+
+export KOPS_STATE_STORE=s3://dev.k8s.rohit.in
+
+ kops create cluster --cloud=aws --zones=us-east-2b --name=dev.k8s.rohit.in --dns-zone=rohit.in --dns private
+
+kops update cluster --name dev.k8s.rohit.in --yes
